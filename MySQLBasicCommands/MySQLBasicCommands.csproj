@@ -11,4 +11,10 @@
     <PackageReference Include="DevExpressMvvm" Version="21.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Styles\" />
+    <Folder Include="Assets\Icons\" />
+    <Folder Include="Views\Pages\" />
+  </ItemGroup>
+
 </Project>
