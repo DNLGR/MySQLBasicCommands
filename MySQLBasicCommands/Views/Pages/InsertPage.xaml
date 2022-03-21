@@ -1,0 +1,115 @@
+﻿<Page x:Class="MySQLBasicCommands.Views.Pages.InsertPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MySQLBasicCommands.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" 
+      d:DesignWidth="600"
+      Title="Insert">
+
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument>
+                <Section Tag="IsHeader">
+                    <Paragraph>
+                        Добавление данных. Команда INSERT
+                    </Paragraph>
+                </Section>
+
+                <Section>
+                    <Paragraph>
+                        <Run>
+                            Для добавления данных в БД в MySQL используется команда INSERT, которая имеет следующий формальный синтаксис:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="INSERT [INTO] имя_таблицы [(список_столбцов)] VALUES (значение1, значение2, ... значениеN)" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            После выражения INSERT INTO в скобках можно указать список столбцов через запятую, в которые надо добавлять данные, и в конце после слова VALUES скобках перечисляют добавляемые для столбцов значения.
+                        </Run>
+                        <LineBreak />
+                        <LineBreak />
+                        <Run>
+                            Добавим в таблицу Products одну строку с помощью следующего кода:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run>INSERT Products(ProductName, Manufacturer, ProductCount, Price) VALUES ('iPhone X', 'Apple', 5, 76000);</Run>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            В данно случае значения будут передаваться столбцам по позиции. То есть стобцу ProductName передается строка "iPhone X", столбцу Manufacturer - строка "Apple" и так далее.
+                        </Run>
+                        <LineBreak />
+                        <LineBreak />
+                        <Run>
+                            Важно, чтобы между значениями и типами данных столбцов было соответствие. Так, столбец ProductName представляет тип varchar, то есть строку. Соответственно этому столбцу мы можем передать строковое значение в одинарных кавычках. А стобец ProductCount представляет тип int, то есть целое число, поэтому данному столбцу нужно передать целые числа, но никак не строки.
+                        </Run>
+                        <LineBreak />
+                        <LineBreak />
+                        <Run>
+                            Необязательно при добавлении данных указывать значения абсолютно для всех столбцов таблицы. Например, в примере выше не указано значение для стобца Id. Но поскольку для данного столбца определен атрибут AUTO_INCREMENT, то его значение будет автоматически генерироваться.
+                        </Run>
+                        <LineBreak />
+                        <LineBreak />
+                        <Run>
+                            Также мы можем опускать при добавлении такие столбцы, которые поддерживают значение NULL или для которых указано значение по умолчанию, то есть для них определены атрибуты NULL или DEFAULT. Так, в таблице Products столбец ProductCount имеет значение по умолчанию - число 0. Поэтому мы можем при добавлении опустить этот столбец, и ему будет передаваться число 0:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="INSERT Products(ProductName, Manufacturer, Price) VALUES ('Galaxy S9', 'Samsung', 63000);"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            С помощью ключевых слов DEFAULT и NULL можно указать, что в качестве значения будет использовать значение по умолчанию или NULL соответственно:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="INSERT Products(ProductName, Manufacturer, Price, ProductCount) VALUES ('Nokia 9', 'HDM Global', 41000, DEFAULT);"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run Text="INSERT Products(ProductName, Manufacturer, Price, ProductCount) VALUES ('Nokia 9', 'HDM Global', 41000, NULL);"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Также мы можем добавить сразу несколько строк:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="INSERT Products(ProductName, Manufacturer, Price, ProductCount) VALUES"/>
+                            <LineBreak/>
+                            <Run Text="('iPhone 8', 'Apple', 51000, 3),"/>
+                            <LineBreak/>
+                            <Run Text="('P20 Lite', 'Huawei', 34000, 4),"/>
+                            <LineBreak/>
+                            <Run Text="('Galaxy S8', 'Samsung', 46000, 2);"/>
+                        </Paragraph>
+                    </Section>
+
+                </Section>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

@@ -5,70 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MySQLBasicCommands"
         xmlns:vm="clr-namespace:MySQLBasicCommands.ViewModels"
-        mc:Ignorable="d"
-        x:Name="Window"
-        Title="Home" 
-        Height="532" 
-        Width="800"
-        WindowStyle="None"
-        ResizeMode="NoResize">
+        mc:Ignorable="d" Height="532" Width="800"
+        Style="{DynamicResource modern_window}"
+        WindowStartupLocation="CenterScreen"
+        Title="MySQL Helper">
 
     <Window.DataContext>
         <vm:ContentViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
-            <RowDefinition />
-            <RowDefinition Height="32" />
-        </Grid.RowDefinitions>
-        
-        <!--#region Title -->
-        <Grid x:Name="Header" Grid.Row="0">
-            <Button Height="25" Width="25" Content="" HorizontalAlignment="Left"  Margin="5, 0"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-            <Label Content="MySQL Basic commands" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!--#region Navigation bar -->        
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition />
+                <RowDefinition Height="64" />
+            </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Width="25" Height="25" Margin="0, 0, 5, 0" Command="{Binding MinimizeCommand}"/>
-                <Button Width="25" Height="25" Margin="0, 0, 5, 0" Command="{Binding MaximizeCommand}"/>
-                <Button Width="25" Height="25" Margin="0, 0, 5, 0" Command="{Binding ExitCommand}"/>
+            <!--#region Home button -->
+            <Button 
+                Grid.Row="0"
+                ToolTip="Стартовая страница"
+                x:Name="btn_Home"
+                Command="{Binding HomeCommand}"
+                Style="{DynamicResource navbar_button}" 
+                Content="{DynamicResource icon_home}"/>
+            <!--#endregion-->
+
+            <!--#region Navigation buttons -->
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <Button ToolTip="Добавление данных, команда 'Insert'" Style="{DynamicResource navbar_button}" Content="{DynamicResource icon_insert}" Command="{Binding InsertCommand}" Cursor="Hand" />
+                <Button ToolTip="Выборка данных, команда 'Select'" Style="{DynamicResource navbar_button}" Content="{DynamicResource icon_select}" Command="{Binding SelectCommand}" />
+                <Button ToolTip="Фильтрация данных, оператор 'Where'" Style="{DynamicResource navbar_button}" Content="{DynamicResource icon_where}" Command="{Binding WhereCommand}" />
+                <Button ToolTip="Обновление данных, команда 'Update'" Style="{DynamicResource navbar_button}" Content="{DynamicResource icon_update}" Command="{Binding UpdateCommand}" />
+                <Button ToolTip="Удаление данных, команда 'Delete'" Style="{DynamicResource navbar_button}" Content="{DynamicResource icon_delete}" Command="{Binding DeleteCommand}" />
             </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Exit button -->
+            <Button 
+                Grid.Row="2"
+                ToolTip="Exit" 
+                Tag="IsCloseButton"
+                Style="{DynamicResource navbar_button}" 
+                Content="{DynamicResource icon_close}" 
+                Command="{Binding ExitCommand}"/>
+            <!--#endregion-->
         </Grid>
         <!--#endregion-->
 
-        <!--#region Manu & Content -->
-        <Grid Grid.Row="1" HorizontalAlignment="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            
-            <!-- Menu -->
-            <Grid x:Name="Menu" Grid.Column="0">
-                <StackPanel>
-                    <Button Content="Create database" Height="40" Margin="5"/>
-                    <Button Content="Delete database" Height="40" Margin="5"/>
-                    <Button Content="Create table" Height="40" Margin="5"/>
-                    <Button Content="Delete table" Height="40" Margin="5"/>
-                    <Button Content="Select" Height="40" Margin="5"/>
-                    <Button Content="Update" Height="40" Margin="5"/>
-                    <Button Content="Delete" Height="40" Margin="5"/>
-                    <Button Content="Group by" Height="40" Margin="5"/>
-                </StackPanel>
-            </Grid>
-
-            <!-- Content -->
-            <Grid x:Name="Content" Grid.Column="1">
-                <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" />
-            </Grid>
-        </Grid>
-        <!--#endregion-->
-
-        <!--#region Footer -->
-        <Grid x:Name="Footer" Grid.Row="2">
-            <Label Content="Footer" HorizontalContentAlignment="Center" />
+        <!--#region Content frame -->
+        <Grid Grid.Column="1">
+            <Frame Style="{DynamicResource modern_frame}" Content="{Binding CurrentPage}" />
         </Grid>
         <!--#endregion-->
     </Grid>

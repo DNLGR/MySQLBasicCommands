@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MySQLBasicCommands"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <FontFamily x:Key="header_font">Segoe UI</FontFamily>
+    <FontFamily x:Key="content_font">Aria</FontFamily>
+    <FontFamily x:Key="selected_font">Candara</FontFamily>
+
+    <FontWeight x:Key="header_weight">Regular</FontWeight>
+    <FontWeight x:Key="content_weight">Regular</FontWeight>
+    <FontWeight x:Key="selected_weight">Bold</FontWeight>
+    
+    <system:Double x:Key="header_size">24</system:Double>
+    <system:Double x:Key="content_size">14</system:Double>
+    <system:Double x:Key="selected_size">12</system:Double>
+
+</ResourceDictionary>

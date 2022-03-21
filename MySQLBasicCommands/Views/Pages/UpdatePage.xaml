@@ -1,0 +1,89 @@
+﻿<Page x:Class="MySQLBasicCommands.Views.Pages.UpdatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MySQLBasicCommands.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" 
+      d:DesignWidth="600"
+      Title="Update">
+
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument>
+                <Section Tag="IsHeader">
+                    <Paragraph>
+                        <Run>Обновление данных. Команда UPDATE</Run>
+                    </Paragraph>
+                </Section>
+
+                <Section>
+                    <Paragraph>
+                        <Run>
+                            Команда UPDATE применяется для обновления уже имеющихся строк. Она имеет следующий формальный синтаксис:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="UPDATE имя_таблицы" />
+                            <LineBreak/>
+                            <Run Text="SET столбец1 = значение1, столбец2 = значение2, ... столбецN = значениеN" />
+                            <LineBreak/>
+                            <Run Text="[WHERE условие_обновления]" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Например, увеличим у всех товаров цену на 3000:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="UPDATE Products SET Price = Price + 3000;" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Используем выражение WHERE и изменим название производителя с "Samsung" на "Samsung Inc.":
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="UPDATE Products SET Manufacturer = 'Samsung Inc.' WHERE Manufacturer = 'Samsung';" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Также можно обновлять сразу несколько столбцов:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="UPDATE Products SET Manufacturer = 'Samsung', ProductCount = ProductCount + 3 WHERE Manufacturer = 'Samsung Inc.';" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            При обновлении вместо конкретных значений и выражений мы можем использовать ключевые слова DEFAULT и NULL для установки соответственно значения по умолчанию или NULL:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="UPDATE Products SET ProductCount= DEFAULT WHERE Manufacturer = 'Huawei';" />
+                        </Paragraph>
+                    </Section>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

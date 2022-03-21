@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MySQLBasicCommands">
+
+    <SolidColorBrush x:Key="text_brush" Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="action_brush" Color="#323232" />
+
+    <SolidColorBrush x:Key="primary_brush" Color="#252525" />
+
+    <SolidColorBrush x:Key="selected_brush" Color="DarkOrange" />
+
+    <SolidColorBrush x:Key="secondary_brush" Color="#FFFFFF" />
+
+</ResourceDictionary>

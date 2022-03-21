@@ -1,0 +1,75 @@
+﻿<Page x:Class="MySQLBasicCommands.Views.Pages.DeletePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MySQLBasicCommands.Views.Pages"
+        mc:Ignorable="d"
+        d:DesignHeight="800" 
+        d:DesignWidth="600"
+        Title="Delete">
+    
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument>
+                <Section Tag="IsHeader">
+                    <Paragraph>
+                        <Run>
+                            Удаление данных. Команда DELETE
+                        </Run>
+                    </Paragraph>
+                </Section>
+
+                <Section>
+                    <Paragraph>
+                        <Run>
+                            Команда DELETE удаляет данные из БД. Она имеет следующий формальный синтаксис:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="DELETE FROM имя_таблицы [WHERE условие_удаления]"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Например, удалим строки, у которых производитель - Huawei:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="DELETE FROM Products WHERE Manufacturer='Huawei';"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Или удалим все товары, производителем которых является Apple и которые имеют цену меньше 60000:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="DELETE FROM Products WHERE Manufacturer='Apple' AND Price &lt; 60000;"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Если необходимо вовсе удалить все строки вне зависимости от условия, то условие можно не указывать:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="DELETE FROM Products;"/>
+                        </Paragraph>
+                    </Section>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

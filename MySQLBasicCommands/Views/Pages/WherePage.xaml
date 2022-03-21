@@ -1,0 +1,252 @@
+﻿<Page x:Class="MySQLBasicCommands.Views.Pages.WherePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MySQLBasicCommands.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" 
+      d:DesignWidth="600"
+      Title="Where">
+
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument>
+                <Section Tag="IsHeader">
+                    <Paragraph>
+                        <Run>Фильтрация данных. Оператор WHERE</Run>
+                    </Paragraph>
+                </Section>
+
+                <Section>
+                    <Paragraph>
+                        <Run>
+                            Зачастую необходимо извлекать не все данные из БД, а только те, которые соответствуют определенному условию. Для фильтрации данных в команде SELECT применяется оператор WHERE, после которого указывается условие.
+                        </Run>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run>
+                            Если условие истинно, то строка попадает в результирующую выборку. В качестве можно использовать операции сравнения, которые сравнивают два выражения:
+                        </Run>
+                    </Paragraph>
+
+                    <List MarkerStyle="Disc">
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'=' : сравнение на равенство.</Run>
+                            </Paragraph>
+                        </ListItem>
+
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'!=' : сравнение на неравенство.</Run>
+                            </Paragraph>
+                        </ListItem>
+
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'&lt;&gt;' : сравнение на неравенство.</Run>
+                            </Paragraph>
+                        </ListItem>
+
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'&lt;' : меньше чем.</Run>
+                            </Paragraph>
+                        </ListItem>
+
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'&gt;' : больше чем.</Run>
+                            </Paragraph>
+                        </ListItem>
+
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'&lt;=' : меньше чем или равно.</Run>
+                            </Paragraph>
+                        </ListItem>
+
+                        <ListItem>
+                            <Paragraph>
+                                <Run>'&gt;=' : больше чем или равно;</Run>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+
+                    <Paragraph>
+                        <Run>К примеру, выберем всех товары, производителем которых является компания Samsung: (Стоит отметить, что для MySQL не важен регистр символов, и, к примеру, строка "Samsung" будет эквивалентна строке "SAMSUNG" или "sumSunG")</Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT * FROM Products WHERE Manufacturer = 'Samsung';"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>Другой пример - найдем все товары, количество которых меньше 3:</Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT * FROM Products WHERE ProductCount &lt; 3;"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>Критерий фильтрации может представлять и более сложное составное выражение. Например, найдем все товары, у которых совокупная стоимость больше 100 000:</Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT * FROM Products WHERE Price * ProductCount &gt; 100000;"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Section Tag="IsHeader">
+                        <Paragraph>
+                            <Run>Логические операторы</Run>
+                        </Paragraph>
+                    </Section>
+
+                    <Section>
+                        <Paragraph>
+                            <Run>Логические операторы позволяют объединить несколько условий. В MySQL можно использовать следующие логические операторы:</Run>
+                        </Paragraph>
+
+                        <List MarkerStyle="Disc">
+                            <ListItem>
+                                <Paragraph>
+                                    <Bold>AND:</Bold>
+                                    <Run> операция логического И. Она объединяет два выражения:</Run>
+                                </Paragraph>
+
+                                <Section Tag="IsSelected">
+                                    <Paragraph>
+                                        <Run>выражение1 AND выражение2</Run>
+                                    </Paragraph>
+                                </Section>
+
+                                <Paragraph>
+                                    <Run>Только если оба этих выражения одновременно истинны, то и общее условие оператора AND также будет истинно. То есть если и первое условие истинно, и второе.</Run>
+                                </Paragraph>
+                            </ListItem>
+
+                            <ListItem>
+                                <Paragraph>
+                                    <Bold>OR:</Bold>
+                                    <Run> операция логического ИЛИ. Она также объединяет два выражения:</Run>
+                                </Paragraph>
+
+                                <Section Tag="IsSelected">
+                                    <Paragraph>
+                                        <Run>выражение1 OR выражение2</Run>
+                                    </Paragraph>
+                                </Section>
+
+                                <Paragraph>
+                                    <Run>Если хотя бы одно из этих выражений истинно, то общее условие оператора OR также будет истинно. То есть если или первое условие истинно, или второе.</Run>
+                                </Paragraph>
+                            </ListItem>
+
+                            <ListItem>
+                                <Paragraph>
+                                    <Bold>NOT:</Bold>
+                                    <Run> операция логического отрицания. Если выражение в этой операции ложно, то общее условие истинно.</Run>
+                                </Paragraph>
+
+                                <Section Tag="IsSelected">
+                                    <Paragraph>
+                                        <Run>NOT выражение</Run>
+                                    </Paragraph>
+                                </Section>
+                            </ListItem>
+                        </List>
+
+                        <Paragraph>
+                            <Run>Например, выберем все товары, у которых производитель Samsung и одновременно цена больше 50000:</Run>
+                        </Paragraph>
+
+                        <Section Tag="IsSelected">
+                            <Paragraph>
+                                <Run Text="SELECT * FROM Products WHERE Manufacturer = 'Samsung' AND Price > 50000"/>
+                            </Paragraph>
+                        </Section>
+
+                        <Paragraph>
+                            <Run>Теперь изменим оператор на OR. То есть выберем все товары, у которых либо производитель Samsung, либо цена больше 50000:</Run>
+                        </Paragraph>
+
+                        <Section Tag="IsSelected">
+                            <Paragraph>
+                                <Run Text="SELECT * FROM Products WHERE Manufacturer = 'Samsung' OR Price > 50000"/>
+                            </Paragraph>
+                        </Section>
+
+                        <Paragraph>
+                            <Run>Применение оператора NOT - выберем все товары, у которых производитель не Samsung:</Run>
+                        </Paragraph>
+
+                        <Section Tag="IsSelected">
+                            <Paragraph>
+                                <Run Text="SELECT * FROM Products WHERE NOT Manufacturer = 'Samsung';"/>
+                            </Paragraph>
+                        </Section>
+
+                        <Section Tag="IsHeader">
+                            <Paragraph>
+                                <Run>Приоритет операций</Run>
+                            </Paragraph>
+                        </Section>
+
+                        <Paragraph>
+                            <Run>
+                                В одном условии при необходимости мы можем объединять несколько логических операций. Однако следует учитывать, что самой приоритетной операцией, которая выполняется в первую очередь, является NOT, менее приоритетная - AND и операция с наименьшим приоритетом - OR. Например:
+                            </Run>
+                        </Paragraph>
+
+                        <Section Tag="IsSelected">
+                            <Paragraph>
+                                <Run Text="SELECT * FROM Products WHERE Manufacturer ='Samsung' OR NOT Price > 30000 AND ProductCount > 2;"/>
+                            </Paragraph>
+                        </Section>
+
+                        <Paragraph>
+                            <Run>
+                                В данном случае сначала вычисляется выражение NOT Price > 30000, то есть цена должна быть меньше или равна 30000.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                Затем вычисляется выражение NOT Price > 30000 AND ProductCount > 2, то есть цена должна быть меньше или равна 30000 и одновременно количество товаров должно быть больше 2.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                В конце вычисляется оператор OR - либо цена должна быть меньше или равна 30000 и одновременно количество товаров должно быть больше 2, либо производителем должен быть Samsung.
+                            </Run>
+                            <LineBreak/>    
+                            <LineBreak/>
+                            <Run>
+                                С помощью скобок можно переопределить приоритет операций:
+                            </Run>
+                        </Paragraph>
+
+                        <Section Tag="IsSelected">
+                            <Paragraph>
+                                <Run Text="SELECT * FROM Products WHERE Manufacturer ='Samsung' OR NOT (Price > 30000 AND ProductCount > 2);"/>
+                            </Paragraph>
+                        </Section>
+
+                        <Paragraph>
+                            <Run>
+                                В данном случае находим товары, у которых либо производитель Samsung, либо одновременно цена товара меньше или равна 30000 и количество товаров меньше 3.
+                            </Run>
+                        </Paragraph>
+                    </Section>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,42 @@
+﻿<ResourceDictionary     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:local="clr-namespace:MySQLBasicCommands"
+                        xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <Style TargetType="{x:Type FlowDocument}">
+        <Setter Property="Background" Value="{DynamicResource secondary_brush}" />
+        <Setter Property="Foreground" Value="{DynamicResource primary_brush}" />
+        
+        <Setter Property="FontFamily" Value="{DynamicResource content_font}" />
+        <Setter Property="FontSize" Value="{DynamicResource Regular}" />
+        <Setter Property="FontWeight" Value="{DynamicResource content_weight}" />
+
+        <Setter Property="Cursor" Value="Arrow" />
+    </Style>
+
+    <Style TargetType="{x:Type Section}">
+        <Setter Property="Foreground" Value="{DynamicResource primary_brush}" />
+        <Style.Triggers>
+            <Trigger Property="Tag" Value="IsSelected">
+                <Setter Property="Foreground" Value="{DynamicResource selected_brush}"/>
+                <Setter Property="FontFamily" Value="{DynamicResource selected_font}"/>
+                <Setter Property="FontSize" Value="{DynamicResource selected_size}" />
+                <Setter Property="FontWeight" Value="{DynamicResource selected_weight}" />
+                <Setter Property="Margin" Value="37 0 0 0"/>
+            </Trigger>
+
+            <Trigger Property="Tag" Value="IsHeader">
+                <Setter Property="Foreground" Value="{DynamicResource primary_brush}"/>
+                <Setter Property="FontSize" Value="{DynamicResource header_size}"/>
+                <Setter Property="FontFamily" Value="{DynamicResource header_font}"/>
+                <Setter Property="FontWeight" Value="{DynamicResource header_weight}"/>
+                <Setter Property="TextAlignment" Value="Left" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type FlowDocumentScrollViewer}">
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
+    </Style>
+
+</ResourceDictionary>

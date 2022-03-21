@@ -12,9 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Styles\" />
-    <Folder Include="Assets\Icons\" />
-    <Folder Include="Views\Pages\" />
+    <Page Update="Assets\Styles\FlowDocument.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Assets\Styles\Frame.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

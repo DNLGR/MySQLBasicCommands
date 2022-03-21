@@ -1,0 +1,109 @@
+﻿<Page x:Class="MySQLBasicCommands.Views.Pages.SelectPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MySQLBasicCommands.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" 
+      d:DesignWidth="600"
+      Title="Select">
+
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument>
+                <Section Tag="IsHeader">
+                    <Paragraph>
+                        <Run>
+                            Выборка данных. Команда SELECT
+                        </Run>
+                    </Paragraph>
+                </Section>
+
+                <Section>
+                    <Paragraph>
+                        <Run>
+                            Для выборки данных из БД в MySQL применяется команда SELECT. В упрощенном виде она имеет следующий синтаксис:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT список_столбцов FROM имя_таблицы;"/>
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Например, получим все записи из таблицы 'Table' :
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT * FROM Table;" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Символ звездочка * указывает, что нам надо получить все столбцы из указанной таблицы.
+                        </Run>
+                    </Paragraph>
+
+                    <Paragraph>
+                        <Run>
+                            Стоит отметить, что применение звездочки * для получения данных считается не очень хорошей практикой, так как обычно необходимо получить данные по небольшому набору столбцов. Поэтому более оптимальный подход заключается в указании всех необходимых столбцов после слова SELECT. Исключение составляет тот случай, когда надо получить данные по абсолютно всем столбцам таблицы. Также использование символа * может быть предпочтительно тогда, когда названия столбцов не известны.
+                        </Run>
+                        <LineBreak />
+                        <LineBreak />
+                        <Run>
+                            Если необходимо получить данные не из всех, а из каких-то конкретных столбцов, тогда спецификации этих столбцов перечисляются через запятую после SELECT. К примеру получим зачения столбцов ProductName (имя продукта), Price (цена) из таблицы Products.
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT ProductName, Price FROM Products;" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Спецификация столбца необязательно должна представлять его название. Это может быть любое выражение, например, результат арифметической операции. Так, выполним следующий запрос:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT ProductName, Price * ProductCount FROM Products;" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Здесь при выборке будут создаваться два столбца. Причем второй столбец представляет значение столбца Price, умноженное на значение столбца ProductCount, то есть совокупную стоимость товара.
+                        </Run>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run>
+                            С помощью оператора AS можно изменить название выходного столбца или определить его псевдоним:
+                        </Run>
+                    </Paragraph>
+
+                    <Section Tag="IsSelected">
+                        <Paragraph>
+                            <Run Text="SELECT ProductName AS Title, Price * ProductCount AS TotalSum FROM Products;" />
+                        </Paragraph>
+                    </Section>
+
+                    <Paragraph>
+                        <Run>
+                            Здесь для первого столбца определяется псевдоним Title, хотя в реальности он будет представлять столбец ProductName. Второй столбец TotalSum хранит произведение столбцов ProductCount и Price.
+                        </Run>
+                    </Paragraph>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>
